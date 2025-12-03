@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../api"; // use centralized Axios
 import Navbar from "../components/Navbar";
 
 const AddAdmin = () => {
@@ -14,7 +14,7 @@ const AddAdmin = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/admin/add", {
+      const res = await axios.post("/admin/add", {  // note: removed 'http://localhost:5000'
         name,
         email,
       });
@@ -45,7 +45,10 @@ const AddAdmin = () => {
           style={{ margin: "5px", padding: "5px" }}
         />
         <br />
-        <button onClick={handleAddAdmin} style={{ padding: "5px 10px", marginTop: "10px" }}>
+        <button
+          onClick={handleAddAdmin}
+          style={{ padding: "5px 10px", marginTop: "10px" }}
+        >
           Add Admin
         </button>
         <p>{msg}</p>

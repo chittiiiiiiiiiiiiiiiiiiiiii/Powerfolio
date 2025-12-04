@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../api"; // use centralized Axios
+import axios from "../api"; // centralized Axios
 import Navbar from "../components/Navbar";
 
 const AddAdmin = () => {
@@ -14,10 +14,7 @@ const AddAdmin = () => {
     }
 
     try {
-      const res = await axios.post("/admin/add", {  // note: removed 'http://localhost:5000'
-        name,
-        email,
-      });
+      const res = await axios.post("/admin/add", { name, email });
       setMsg(res.data.msg);
       setName("");
       setEmail("");
